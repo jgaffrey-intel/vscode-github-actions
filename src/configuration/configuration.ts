@@ -82,6 +82,10 @@ export function getGitHubApiUri(): string {
   }
 }
 
+export function getProxyUrl(): string {
+  return getConfiguration().get<string>("http.proxy", "");
+}
+
 async function updateLanguageServerApiUrl(context: vscode.ExtensionContext) {
   await deactivateLanguageServer();
 
