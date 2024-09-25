@@ -14,9 +14,8 @@ const myFetch: typeof undiciFetch = (url, opts) => {
     dispatcher: new ProxyAgent({
       uri: proxyUrl,
       keepAliveTimeout: 10,
-      keepAliveMaxTimeout: 10,
-
-    }),
+      keepAliveMaxTimeout: 10
+    })
   });
 };
 
@@ -25,14 +24,14 @@ export function getClient(token: string): Octokit {
     return new Octokit({
       auth: token,
       userAgent: userAgent,
-      baseUrl: getGitHubApiUri(),
+      baseUrl: getGitHubApiUri()
     });
   } else {
     return new Octokit({
       auth: token,
       userAgent: userAgent,
       baseUrl: getGitHubApiUri(),
-      request: { fetch: myFetch },
+      request: {fetch: myFetch}
     });
   }
 }
