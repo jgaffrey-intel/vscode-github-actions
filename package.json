@@ -1,17 +1,18 @@
 {
-  "name": "@github/vscode-github-actions",
-  "displayName": "GitHub Actions",
-  "publisher": "github",
+  "name": "jgaffrey-vscode-github-actions",
+  "displayName": "GitHub Actions (John)",
+  "publisher": "jgaffrey",
   "icon": "resources/logo.png",
   "license": "MIT",
   "repository": {
     "url": "https://github.com/github/vscode-github-actions"
   },
   "description": "GitHub Actions workflows and runs for github.com hosted repositories in VS Code",
-  "version": "0.27.0",
+  "version": "0.27.999",
   "engines": {
     "vscode": "^1.72.0",
-    "node": ">= 16"
+    "node": ">= 16",
+    "undici": "^6.19.8"
   },
   "extensionKind": [
     "workspace"
@@ -565,20 +566,35 @@
     "@actions/workflow-parser": "*",
     "@octokit/rest": "^19.0.7",
     "@vscode/vsce": "^2.19.0",
+    "assert": "^2.1.0",
+    "assert-browserify": "^2.0.0",
     "buffer": "^6.0.3",
+    "console-browserify": "^1.2.0",
+    "constants-browserify": "^1.0.0",
     "crypto-browserify": "^3.12.0",
     "dayjs": "^1.11.7",
     "elliptic": "6.5.7",
+    "express-browserify": "^1.0.3",
+    "graceful-fs": "^4.2.11",
+    "http-browserify": "^1.7.0",
     "libsodium-wrappers": "^0.7.10",
+    "net-browserify": "^0.2.4",
     "path-browserify": "^1.0.1",
+    "querystring-es3": "^0.2.1",
+    "readable-stream": "^4.5.2",
     "ssh-config": "^3.0.0",
     "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
     "timers-browserify": "^2.0.12",
     "tunnel": "0.0.6",
     "undici": "^6.19.8",
-    "util": "^0.12.1",
+    "url": "^0.11.4",
+    "util": "^0.12.5",
+    "utils": "^0.3.1",
     "uuid": "^3.3.3",
-    "vscode-languageclient": "^8.0.2"
+    "vm-browserify": "^1.1.2",
+    "vscode-languageclient": "^8.0.2",
+    "zlib-browserify": "^0.0.3"
   },
   "overrides": {
     "browserify-sign": {

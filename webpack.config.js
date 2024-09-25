@@ -1,5 +1,6 @@
 "use strict";
 
+const { worker } = require("cluster");
 const path = require("path");
 const webpack = require("webpack");
 
@@ -20,7 +21,11 @@ module.exports = (env, argv) => {
       }),
       new webpack.DefinePlugin({
         PRODUCTION: argv.mode === "production"
-      })
+      }),
+      new webpack.NormalModuleReplacementPlugin(/node:/, (resource) => {
+        resource.request = resource.request.replace(/^node:/, "");
+      }),
+
     ],
     resolve: {
       extensions: [".ts", ".js"],
@@ -28,11 +33,29 @@ module.exports = (env, argv) => {
         "universal-user-agent$": "universal-user-agent/dist-node/index.js"
       },
       fallback: {
+        assert: require.resolve("assert/"),
         buffer: require.resolve("buffer/"),
+        console: require.resolve("console-browserify"),
         path: require.resolve("path-browserify"),
         crypto: require.resolve("crypto-browserify"),
+        net: require.resolve("net-browserify"),
         stream: require.resolve("stream-browserify"),
-        timers: require.resolve("timers-browserify")
+        http: require.resolve("stream-http"),
+        timers: require.resolve("timers-browserify"),
+        querystring: require.resolve("querystring-es3"),
+        express: require.resolve("express-browserify"),
+        fs: require.resolve("graceful-fs"),
+        _stream_transform: false,
+        constants: require.resolve("constants-browserify"),
+        tls: false,
+        diagnostics_channel: false,
+        perf_hooks: false,
+        util: false,
+        worker_threads: false,
+        async_hooks: false,
+        vm: require.resolve("vm-browserify"),
+        url: require.resolve("url/"),
+        zlib: require.resolve("browserify-zlib")
       }
     },
     module: {
